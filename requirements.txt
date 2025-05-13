@@ -11,3 +11,4 @@ langgraph==0.2.73
 pydantic==2.9.2
 langchain-groq==0.3.2
 langchain==0.3.24
+streamlit_authenticator==0.3.3
