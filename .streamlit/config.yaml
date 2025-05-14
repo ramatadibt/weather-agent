@@ -1,0 +1,9 @@
+credentials:
+  usernames:
+    btuser:
+      name: "btuser"
+      password: "$2b$12$oOtBqr0DpJgseSCNV9zknODNw1gpKPsaB9PtliGuc/XffAY9TBmXC" 
+cookie:
+  expiry_days: 30
+  key: "weather_agent_auth_key" 
+  name: "weather_agent_auth_name"
