@@ -1665,19 +1665,19 @@ if authentication_status:
             col1, col2 = st.columns([1, 1], gap="small")
             
             with col1:
-                if st.button(f"🕒\nHourly\nForecast", key="hourly_btn",use_container_width=True):
+                if st.button(f"🕒 \nHourly\nForecast", key="hourly_btn",use_container_width=True):
                     query = f"Show me the hourly forecast for {current_location}"
                     process_query(query)
                     
             with col2:
-                if st.button(f"📅\n7-Day \nOutlook", key="daily_btn",use_container_width=True):
+                if st.button(f"📅 \n7-Day  \nOutlook", key="daily_btn",use_container_width=True):
                     query = f"What's the weekly forecast for {current_location}?"
                     process_query(query)
                     
             col1, col2 = st.columns([1, 1], gap="small")
             
             with col1:
-                if st.button(f"⚠️\nWeather \nAlerts", key="alerts_btn",use_container_width=True):
+                if st.button(f"⚠️\nWeather  \nAlerts", key="alerts_btn",use_container_width=True):
                     query = f"Are there any weather warnings or hazards I should know about in {current_location}?"
                     process_query(query)
                     
