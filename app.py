@@ -112,7 +112,7 @@ if authentication_status:
       setZoomLevel(80);
     } else {
       // Default for other browsers
-      setZoomLevel(80);
+      setZoomLevel(75);
     }
     
     console.log("Browser detected:", browser, "- Zoom level set accordingly");
