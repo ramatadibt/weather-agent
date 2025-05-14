@@ -61,8 +61,6 @@ authenticator = stauth.Authenticate(
 name, authentication_status, username = authenticator.login('main')
 
 if authentication_status:
-    # Initialize the local LLM
-    llm = ChatOllama(model='llama3.2')
 
 
     # Custom CSS
@@ -1634,7 +1632,7 @@ if authentication_status:
     def main():
         # Header with logo
         col1, col2, col3 = st.columns([1, 3, 1])  # Adjust column ratios as needed
-        logo = r"C:\Users\Rentorzo\Downloads\opaquelogo.png"  # Ensure correct path
+        logo = r"opaquelogo.png"  # Ensure correct path
         with col1:
             st.image(logo, width=300)  # Logo on the left
         with col2:
