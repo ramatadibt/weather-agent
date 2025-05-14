@@ -28,6 +28,7 @@ from langgraph.prebuilt import create_react_agent
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import StateGraph, END
 from pydantic import BaseModel, Field
+import streamlit.components.v1 as components
 
 # from langchain.tools import tool
 from langchain.prompts import PromptTemplate
@@ -61,6 +62,37 @@ authenticator = stauth.Authenticate(
 name, authentication_status, username = authenticator.login('main')
 
 if authentication_status:
+    # Set zoom level with JavaScript
+    zoom_script = """
+    <script>
+      // Function to set zoom level
+      function setZoomLevel(zoomLevel) {
+        // Chrome, Safari, Edge
+        document.body.style.zoom = zoomLevel;
+        
+        // Firefox
+        if (navigator.userAgent.indexOf('Firefox') !== -1) {
+          document.body.style.transform = `scale(${zoomLevel/100})`;
+          document.body.style.transformOrigin = "0 0";
+        }
+        
+        // For IE
+        if (document.body.style.zoom === undefined && document.body.style.MozTransform === undefined) {
+          // Try CSS zoom
+          var style = document.createElement('style');
+          style.type = 'text/css';
+          style.innerHTML = 'body {zoom: ' + zoomLevel + '%;}';
+          document.getElementsByTagName('head')[0].appendChild(style);
+        }
+      }
+      
+      // Set zoom when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        setZoomLevel(80);
+      });
+    </script>
+    """
+    components.html(zoom_script, height=0)    
 
 
     # Custom CSS
