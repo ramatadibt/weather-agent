@@ -291,12 +291,18 @@ if authentication_status:
             font-size: 14px;  /* Match input font size */
         }
         .stButton > button {
-            height: 2rem;  /* Match input height */
-            padding: 0 1rem;  /* Consistent padding */
-            vertical-align: middle;  /* Align with input */
-            line-height: 2rem;  /* Center text vertically */
-            font-size: 14px;  /* Match input font size */
-        }
+    height: auto;  /* Allow height to adjust based on content */
+    min-height: 3rem;  /* Ensure a minimum height for consistency */
+    padding: 0.5rem 1rem;  /* Adjust padding for better fit */
+    font-size: 12px;  /* Reduce font size to fit text */
+    line-height: 1.2;  /* Adjust line height for better text alignment */
+    white-space: normal;  /* Allow text to wrap naturally */
+    word-wrap: break-word;  /* Ensure long words break to fit */
+    display: flex;  /* Use flexbox to center content */
+    align-items: center;  /* Center vertically */
+    justify-content: center;  /* Center horizontally */
+    text-align: center;  /* Ensure text is centered */
+}
                 .main-weather-card {
         display: flex;
         flex-direction: column;
