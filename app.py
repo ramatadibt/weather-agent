@@ -44,7 +44,10 @@ st.set_page_config(
         initial_sidebar_state="collapsed"
     )
 
-with open('config.yaml') as file:
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+config_path = os.path.join(current_dir, '.streamlit', 'config.yaml')
+with open(config_path) as file:
     config = yaml.load(file, Loader=SafeLoader)
 
 authenticator = stauth.Authenticate(
