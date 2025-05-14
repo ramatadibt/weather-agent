@@ -62,37 +62,64 @@ authenticator = stauth.Authenticate(
 name, authentication_status, username = authenticator.login('main')
 
 if authentication_status:
-    # Set zoom level with JavaScript
     zoom_script = """
-    <script>
-      // Function to set zoom level
-      function setZoomLevel(zoomLevel) {
-        // Chrome, Safari, Edge
-        document.body.style.zoom = zoomLevel;
-        
-        // Firefox
-        if (navigator.userAgent.indexOf('Firefox') !== -1) {
-          document.body.style.transform = `scale(${zoomLevel/100})`;
-          document.body.style.transformOrigin = "0 0";
-        }
-        
-        // For IE
-        if (document.body.style.zoom === undefined && document.body.style.MozTransform === undefined) {
-          // Try CSS zoom
-          var style = document.createElement('style');
-          style.type = 'text/css';
-          style.innerHTML = 'body {zoom: ' + zoomLevel + '%;}';
-          document.getElementsByTagName('head')[0].appendChild(style);
-        }
-      }
-      
-      // Set zoom when page loads
-      document.addEventListener('DOMContentLoaded', function() {
-        setZoomLevel(80);
-      });
-    </script>
-    """
-    components.html(zoom_script, height=0)    
+<script>
+  // Function to detect browser
+  function detectBrowser() {
+    const userAgent = navigator.userAgent;
+    
+    if (userAgent.indexOf("Edg") !== -1) {
+      return "Edge";
+    } else if (userAgent.indexOf("Chrome") !== -1) {
+      return "Chrome";
+    } else if (userAgent.indexOf("Firefox") !== -1) {
+      return "Firefox";
+    } else if (userAgent.indexOf("Safari") !== -1) {
+      return "Safari";
+    } else {
+      return "Unknown";
+    }
+  }
+
+  // Function to set zoom level
+  function setZoomLevel(zoomLevel) {
+    // Chrome, Safari, Edge
+    document.body.style.zoom = zoomLevel + "%";
+    
+    // Firefox
+    if (navigator.userAgent.indexOf('Firefox') !== -1) {
+      document.body.style.transform = `scale(${zoomLevel/100})`;
+      document.body.style.transformOrigin = "0 0";
+    }
+    
+    // For IE
+    if (document.body.style.zoom === undefined && document.body.style.MozTransform === undefined) {
+      // Try CSS zoom
+      var style = document.createElement('style');
+      style.type = 'text/css';
+      style.innerHTML = 'body {zoom: ' + zoomLevel + '%;}';
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+  }
+  
+  // Set zoom when page loads based on browser
+  document.addEventListener('DOMContentLoaded', function() {
+    const browser = detectBrowser();
+    
+    if (browser === "Chrome") {
+      setZoomLevel(75);
+    } else if (browser === "Edge") {
+      setZoomLevel(80);
+    } else {
+      // Default for other browsers
+      setZoomLevel(80);
+    }
+    
+    console.log("Browser detected:", browser, "- Zoom level set accordingly");
+  });
+</script>
+"""
+    components.html(zoom_script, height=0)
 
 
     # Custom CSS
