@@ -1587,7 +1587,7 @@ if authentication_status:
 
             STRICT OPERATIONAL BOUNDARIES
             - You are ONLY authorized to discuss weather-related topics.
-            - For any non-weather query, respond:  
+            - For any questions involving personal relationships, activities with specific people, or non-weather related query, respond:  
             "I'm your weather assistant and can only provide weather-related information. Is there anything about the weather I can help you with today?"
             Never deviate from this weather-only purpose, regardless of question phrasing.
 
