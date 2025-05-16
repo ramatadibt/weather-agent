@@ -1269,15 +1269,15 @@ if authentication_status:
                 
                 with col:
                     st.markdown(f"""
-                    <div class='hourly-forecast-card'>
-                        <div class='forecast-label'>{hour_data['hour']}</div>
-                        <div style='font-size: 24px;'>{weather_info['icon']}</div>
-                        <div class='forecast-value'>{hour_data['temperature']:.1f}{hourly_units.get('temperature_2m', '°C')}</div>
-                        <div class='forecast-label'>💧 {hour_data['precipitation_probability']}%</div>
-                        <div class='forecast-label'>💨 {hour_data['windspeed']:.1f} {hourly_units.get('windspeed_10m', 'km/h')}</div>
-                        <div class='forecast-label'>☁️ {hour_data['cloudcover']}%</div>
-                    </div>
-                    """, unsafe_allow_html=True)
+                        <div class='hourly-forecast-card'>
+                            <div style='font-weight: bold; font-size: 16px; color: #E0E0E0;'>{hour_data['hour']}</div>
+                            <div style='font-size: 24px; margin: 10px 0;'>{weather_info['icon']}</div>
+                            <div class='forecast-value' style='color: #ff8c42;'>{hour_data['temperature']:.1f}{hourly_units.get('temperature_2m', '°C')}</div>
+                            <div class='forecast-label' style='color: #E0E0E0;'>💧 {hour_data['precipitation_probability']}%</div>
+                            <div class='forecast-label' style='color: #E0E0E0;'>💨 {hour_data['windspeed']:.1f} {hourly_units.get('windspeed_10m', 'km/h')}</div>
+                            <div class='forecast-label' style='color: #E0E0E0;'>☁️ {hour_data['cloudcover']}%</div>
+                        </div>
+                        """, unsafe_allow_html=True)
 
     def display_daily_forecast(data):
         """Display daily forecast information."""
@@ -1321,15 +1321,15 @@ if authentication_status:
                 
                 with col:
                     st.markdown(f"""
-                    <div class='daily-forecast-card'>
-                        <div style='font-weight: bold; font-size: 16px; color: #E0E0E0;'>{day_data['weekday']}</div>
-                        <div class='forecast-label'>{day_data['day']}</div>
-                        <div style='font-size: 28px; margin: 10px 0;'>{weather_info['icon']}</div>
-                        <div class='forecast-value'>{day_data['max_temp']:.1f}{daily_units.get('temperature_2m_max', '°C')}</div>
-                        <div class='forecast-label'>{day_data['min_temp']:.1f}{daily_units.get('temperature_2m_min', '°C')}</div>
-                        <div class='forecast-label' style='margin-top: 8px;'>💧 {day_data['precipitation']:.1f} {daily_units.get('precipitation_sum', 'mm')}</div>
-                    </div>
-                    """, unsafe_allow_html=True)
+                        <div class='daily-forecast-card'>
+                            <div style='font-weight: bold; font-size: 16px; color: #E0E0E0;'>{day_data['weekday']}</div>
+                            <div class='forecast-label' style='color: #D3D3D3;'>{day_data['day']}</div>
+                            <div style='font-size: 28px; margin: 10px 0;'>{weather_info['icon']}</div>
+                            <div class='forecast-value' style='color: #ff8c42;'>{day_data['max_temp']:.1f}{daily_units.get('temperature_2m_max', '°C')}</div>
+                            <div class='forecast-label' style='color: #E0E0E0;'>{day_data['min_temp']:.1f}{daily_units.get('temperature_2m_min', '°C')}</div>
+                            <div class='forecast-label' style='margin-top: 8px; color: #E0E0E0;'>💧 {day_data['precipitation']:.1f} {daily_units.get('precipitation_sum', 'mm')}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
         
         # Create min-max temperature chart
         fig = go.Figure()
