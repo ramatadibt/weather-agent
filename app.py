@@ -1472,12 +1472,12 @@ if authentication_status:
 
         def render_card(pollutant, icon, value, unit):
             return f"""
-            <div style='background-color: rgba(55, 65, 81, 0.7); border-radius: 10px; padding: 12px; text-align: center; height: 100px; display: flex; flex-direction: column; justify-content: center;'>
+            <div style='background-color: #2d4b73; border-radius: 10px; padding: 12px; text-align: center; height: 100px; display: flex; flex-direction: column; justify-content: center; border: 1px solid rgba(255, 140, 66, 0.1); transition: transform 0.2s;'>
                 <div style='display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 5px;'>
                     <span style='font-size: 18px;'>{icon}</span>
-                    <span style='font-size: 14px; color: #D3D3D3;'>{pollutant}</span>
+                    <span style='font-size: 14px; color: #E0E0E0;'>{pollutant}</span>
                 </div>
-                <div style='font-size: 18px; font-weight: 600; color: #F5F6FA;'>{value} {unit}</div>
+                <div style='font-size: 18px; font-weight: 600; color: #ff8c42;'>{value} {unit}</div>
             </div>
             """
 
