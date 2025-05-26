@@ -1586,7 +1586,8 @@ div[data-testid="stTabs"] button[role="tab"]:hover:not([data-state="active"]) {
         tools = [get_weather_for_location, get_hourly_forecast, get_daily_forecast]
         if "checkpointer" not in st.session_state:
             st.session_state.checkpointer = MemorySaver()
-        llm = ChatGroq(model="llama-3.3-70b-versatile")
+        # llm = ChatGroq(model="llama-3.3-70b-versatile")
+        llm = ChatGroq(model = "qwen-qwq-32b")
         
         # Define a single unified function to process queries from both buttons and text input
         def process_query(query):
