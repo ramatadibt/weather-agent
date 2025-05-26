@@ -537,36 +537,39 @@ if authentication_status:
         .metric-value {
             font-size: 20px;
         } 
-        /* Override streamlit_shadcn_ui tabs */
-.st-shadcn-tabs [data-baseweb="tab-list"] {
+        /* Style the tab list container */
+div[data-testid="stTabs"] div[role="tablist"] {
     background-color: #233656 !important; /* Blue background for tab list */
-    padding: 10px 0;
     gap: 10px;
     justify-content: center;
     width: 100%;
+    padding: 10px 0;
     border-radius: 8px 8px 0 0;
 }
 
-.st-shadcn-tabs [data-baseweb="tab"] {
+/* Style the tab buttons */
+div[data-testid="stTabs"] button[role="tab"] {
     background-color: #233656 !important; /* Blue background for inactive tabs */
     color: #E0E0E0 !important; /* Light text for inactive tabs */
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 500;
+    padding: 10px 20px !important;
+    border-radius: 4px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
     text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 140, 66, 0.2); /* Subtle orange border */
+    transition: all 0.3s ease !important;
+    border: 1px solid rgba(255, 140, 66, 0.2) !important; /* Subtle orange border */
 }
 
-.st-shadcn-tabs [data-baseweb="tab"][aria-selected="true"] {
+/* Style the active tab */
+div[data-testid="stTabs"] button[role="tab"][data-state="active"] {
     background-color: #ff8c42 !important; /* Orange background for active tab */
     color: #FFFFFF !important; /* White text for active tab */
-    font-weight: 600;
-    border: 1px solid #ff8c42; /* Solid orange border for active tab */
+    font-weight: 600 !important;
+    border: 1px solid #ff8c42 !important; /* Solid orange border for active tab */
 }
 
-.st-shadcn-tabs [data-baseweb="tab"]:hover {
+/* Hover effect for inactive tabs */
+div[data-testid="stTabs"] button[role="tab"]:hover:not([data-state="active"]) {
     background-color: #ff9c66 !important; /* Lighter orange on hover */
     color: #FFFFFF !important;
 }
