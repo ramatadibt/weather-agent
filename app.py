@@ -1587,7 +1587,7 @@ div[data-testid="stTabs"] button[role="tab"]:hover:not([data-state="active"]) {
         if "checkpointer" not in st.session_state:
             st.session_state.checkpointer = MemorySaver()
         # llm = ChatGroq(model="llama-3.3-70b-versatile")
-        llm = ChatGroq(model = "qwen-qwq-32b")
+        llm = ChatGroq(model = "meta-llama/llama-4-scout-17b-16e-instruct")
         
         # Define a single unified function to process queries from both buttons and text input
         def process_query(query):
