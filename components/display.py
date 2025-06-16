@@ -77,7 +77,7 @@ def display_current_weather(data):
               """, unsafe_allow_html=True)
           
           with col2:
-              # Sunrise and Sunset in card format
+              # Sunrise and Sunset in card format 
               st.markdown(f"""
               <div class="highlight-metrics-container">
                   <div class="highlight-metric-card">
