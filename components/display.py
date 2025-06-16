@@ -448,8 +448,8 @@ def display_air_quality(data):
       
       st.markdown("<h4 style='color: #F5F6FA; margin-bottom: 15px; text-align: center;'>Pollutant Levels</h4>", unsafe_allow_html=True)
       
-      def render_card(pollutant, icon, value, unit):
-          return f"""
+def render_card(pollutant, icon, value, unit):
+      return f"""
           <div style='background-color: #2d4b73; border-radius: 10px; padding: 12px; text-align: center; height: 100px; display: flex; flex-direction: column; justify-content: center; border: 1px solid rgba(255, 140, 66, 0.1); transition: transform 0.2s;'>
               <div style='display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 5px;'>
                   <span style='font-size: 18px;'>{icon}</span>
