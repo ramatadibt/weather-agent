@@ -20,7 +20,7 @@ os.environ['GROQ_API_KEY'] = st.secrets["GROQ_API_KEY"]
 
 from styles.css import load_css 
 from components.dashboard import get_weather_description, fetch_current_weather, fetch_forecast_weather, fetch_air_quality,get_all_weather_data, get_weather_description
-from components.display import display_current_weather, display_hourly_forecast, display_daily_forecast, display_air_quality, 
+from components.display import display_current_weather, display_hourly_forecast, display_daily_forecast, display_air_quality
 
 
 # LangChain and LangGraph Imports
