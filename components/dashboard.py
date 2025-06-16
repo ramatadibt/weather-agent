@@ -169,7 +169,21 @@ def get_weather_description(code):
     return weather_codes.get(code, {"description": "Unknown", "icon": "❓"})
 
 
+# Define input schemas
+class LocationInput(BaseModel):
+    """Input schema for location-to-coordinates tool."""
+    location_name: str = Field(
+        description="The name of the location to convert to coordinates (e.g., 'New York', 'London')"
+    )
 
+class CoordinatesInput(BaseModel):
+    """Input schema for weather fetching tool."""
+    latitude: float = Field(
+        description="Latitude in decimal degrees. Must be between -90 and 90."
+    )
+    longitude: float = Field(
+        description="Longitude in decimal degrees. Must be between -180 and 180."
+    )
 
 def get_coordinates(location_name):
     """Convert location name to coordinates."""
