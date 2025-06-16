@@ -191,7 +191,7 @@ def display_current_weather(data):
           """, unsafe_allow_html=True)
 
 
-  def display_hourly_forecast(data):
+def display_hourly_forecast(data):
       """Display hourly forecast chart."""
       if not data or "forecast" not in data or not data["forecast"]:
           st.warning("Forecast data is not available.")
@@ -257,7 +257,7 @@ def display_current_weather(data):
                       </div>
                       """, unsafe_allow_html=True)
 
-  def display_daily_forecast(data):
+def display_daily_forecast(data):
       """Display daily forecast information."""
       if not data or "forecast" not in data or not data["forecast"]:
           st.warning("Forecast data is not available.")
@@ -368,24 +368,24 @@ def display_current_weather(data):
       
       st.plotly_chart(fig, use_container_width=True)
 
-  def display_air_quality(data):
+def display_air_quality(data):
       """Display air quality information."""
       if not data or "air_quality" not in data or not data["air_quality"]:
           st.warning("Air quality data is not available.")
           return
-
+      
       aq = data["air_quality"]
       hourly_aq = aq.get("hourly", {})
       aq_units = aq.get("hourly_units", {})
-
+      
       if not hourly_aq or "time" not in hourly_aq:
           st.warning("Air quality details are not available.")
           return
-
+      
       st.markdown(f"<h2 class='location-title'>{data['location']}</h2>", unsafe_allow_html=True)
-
+      
       current_aqi = hourly_aq.get("european_aqi", [0])[0]
-
+      
       aqi_categories = {
           (0, 10): {"category": "Very Good", "color": "#50F0E6", "description": "Air quality is excellent. Ideal for outdoor activities."},
           (10, 50): {"category": "Good", "color": "#50CCAA", "description": "Air quality is good. Suitable for outdoor activities."},
@@ -395,12 +395,12 @@ def display_current_weather(data):
           (400, 700): {"category": "Hazardous", "color": "#5E1742", "description": "Health alert: serious effects for all. Avoid outdoor activities."},
           (700, 1000): {"category": "Severe", "color": "#3C0F2D", "description": "Extreme danger: air quality is life-threatening. Stay indoors."}
       }
-
+      
       aqi_info = next(
           (info for (min_val, max_val), info in aqi_categories.items() if min_val <= current_aqi < max_val),
           {"category": "Unknown", "color": "#CCCCCC", "description": "Unable to determine air quality category."}
       )
-
+      
       fig = go.Figure(go.Indicator(
           mode="gauge+number",
           value=current_aqi,
@@ -429,25 +429,25 @@ def display_current_weather(data):
           },
           number={'font': {'color': aqi_info['color'], 'size': 38}}
       ))
-
+      
       fig.update_layout(
           height=250,
           margin=dict(l=20, r=20, t=40, b=10),
           paper_bgcolor='rgba(32, 44, 68, 0)',
           font=dict(color='#E0E0E0')
       )
-
+      
       st.plotly_chart(fig, use_container_width=True)
-
+      
       st.markdown(f"""
       <div style='text-align: center; margin-bottom: 20px;'>
           <div style='font-size: 24px; font-weight: bold; color: {aqi_info["color"]};'>{aqi_info["category"]}</div>
           <div style='color: #D3D3D3; font-size: 16px;'>{aqi_info["description"]}</div>
       </div>
       """, unsafe_allow_html=True)
-
+      
       st.markdown("<h4 style='color: #F5F6FA; margin-bottom: 15px; text-align: center;'>Pollutant Levels</h4>", unsafe_allow_html=True)
-
+      
       def render_card(pollutant, icon, value, unit):
           return f"""
           <div style='background-color: #2d4b73; border-radius: 10px; padding: 12px; text-align: center; height: 100px; display: flex; flex-direction: column; justify-content: center; border: 1px solid rgba(255, 140, 66, 0.1); transition: transform 0.2s;'>
@@ -458,7 +458,7 @@ def display_current_weather(data):
               <div style='font-size: 18px; font-weight: 600; color: #ff8c42;'>{value} {unit}</div>
           </div>
           """
-
+      
       # First row
       col1, col2, col3 = st.columns(3)
       with col1:
@@ -467,9 +467,9 @@ def display_current_weather(data):
           st.markdown(render_card("PM₁₀", "🖼️", hourly_aq.get("pm10", [0])[0], aq_units.get("pm10", "µg/m³")), unsafe_allow_html=True)
       with col3:
           st.markdown(render_card("NO₂", "🚕", hourly_aq.get("nitrogen_dioxide", [0])[0], aq_units.get("nitrogen_dioxide", "µg/m³")), unsafe_allow_html=True)
-
+      
       st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
-
+      
       # Second row
       col4, col5, col6 = st.columns(3)
       with col4:
