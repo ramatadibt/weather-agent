@@ -124,21 +124,6 @@ if authentication_status:
     # Apply custom CSS
     st.markdown(load_css(), unsafe_allow_html=True)
 
-    # Geocoding Functions
-    def get_coordinates(location_name):
-        """Convert location name to coordinates."""
-        geolocator = Nominatim(user_agent="weather_dashboard_app_v2.0")
-        try:
-            location = geolocator.geocode(location_name, timeout=20)
-            if location:
-                print(f"Coordinates found for {location_name}: ({location.latitude}, {location.longitude})")
-                return location.latitude, location.longitude
-            else:
-                st.error(f"Location '{location_name}' could not be geocoded.")
-                return None, None
-        except Exception as e:
-            st.error(f"Geocoding failed for '{location_name}': {e}")
-            return None, None
 
     # Weather Data Functions
     def fetch_current_weather(lat, lon):
@@ -309,7 +294,6 @@ if authentication_status:
             description="Longitude in decimal degrees. Must be between -180 and 180."
         )
 
-    # Keep your existing get_coordinates function as is
     def get_coordinates(location_name):
         """Convert location name to coordinates."""
         geolocator = Nominatim(user_agent="weather_dashboard_app_v2.0")
