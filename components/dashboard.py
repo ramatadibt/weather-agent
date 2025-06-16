@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 from geopy.geocoders import Nominatim
 import markdown
 import html
-
+from pydantic import BaseModel, Field
 
 # Weather Data Functions
 def fetch_current_weather(lat, lon):
