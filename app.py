@@ -36,6 +36,9 @@ import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
 
+import os 
+# os.environ['GROQ_API_KEY'] = st.secrets["GROQ_API_KEY"]
+
 # Page configuration
 st.set_page_config(
         page_title="Weather Dashboard",
@@ -72,8 +75,7 @@ if not st.session_state.api_key_set:
     else:
         st.warning("Please enter your GROQ API key to continue.")
         st.stop()  # Stop execution here if key is not provided
-# import os 
-# os.environ['GROQ_API_KEY'] = st.secrets["GROQ_API_KEY"]
+
 
 
 # name, authentication_status, username = authenticator.login('main')
