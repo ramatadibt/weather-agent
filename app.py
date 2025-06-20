@@ -71,7 +71,7 @@ if not st.session_state.api_key_set:
         os.environ['GROQ_API_KEY'] = api_key
         st.session_state.api_key_set = True
         st.success("API key set successfully. Loading app...")
-        st.experimental_rerun()
+        st.rerun()
     else:
         st.warning("Please enter your GROQ API key to continue.")
         st.stop()  # Stop execution here if key is not provided
