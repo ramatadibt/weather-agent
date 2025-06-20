@@ -15,17 +15,7 @@ import plotly.graph_objects as go
 from geopy.geocoders import Nominatim
 import markdown
 import html
-# import os 
-# os.environ['GROQ_API_KEY'] = st.secrets["GROQ_API_KEY"]
-# Add a text input for the user to enter their GROQ API key
-api_key = st.text_input("Enter your GROQ API Key", type="password")
 
-# Set it as an environment variable only if provided
-if api_key:
-    os.environ['GROQ_API_KEY'] = api_key
-    st.success("API key set successfully.")
-else:
-    st.warning("Please enter your GROQ API key to continue.")
 
 
 # LangChain and LangGraph Imports
@@ -66,6 +56,18 @@ authenticator = stauth.Authenticate(
     auto_hash=False  # Important since you've pre-hashed the passwords
 )
 
+
+# import os 
+# os.environ['GROQ_API_KEY'] = st.secrets["GROQ_API_KEY"]
+# Add a text input for the user to enter their GROQ API key
+api_key = st.text_input("Enter your GROQ API Key", type="password")
+
+# Set it as an environment variable only if provided
+if api_key:
+    os.environ['GROQ_API_KEY'] = api_key
+    st.success("API key set successfully.")
+else:
+    st.warning("Please enter your GROQ API key to continue.")
 # name, authentication_status, username = authenticator.login('main')
 
 # if authentication_status:
