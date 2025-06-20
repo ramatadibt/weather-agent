@@ -66,8 +66,7 @@ api_key = st.text_input("Enter your GROQ API Key", type="password")
 if api_key:
     os.environ['GROQ_API_KEY'] = api_key
     st.success("API key set successfully.")
-else:
-    st.warning("Please enter your GROQ API key to continue.")
+
 # name, authentication_status, username = authenticator.login('main')
 
 # if authentication_status:
@@ -1860,6 +1859,8 @@ if __name__ == "__main__":
 # st.error('Username/password is incorrect')
 # elif authentication_status is None:
 # st.warning('Please enter your username and password')
+else:
+    st.warning("Please enter your GROQ API key to continue.")
 
 
 
