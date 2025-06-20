@@ -57,15 +57,24 @@ authenticator = stauth.Authenticate(
 )
 
 
+# Set a flag in session_state to track whether the API key has been provided
+if "api_key_set" not in st.session_state:
+    st.session_state.api_key_set = False
+
+if not st.session_state.api_key_set:
+    api_key = st.text_input("Enter your GROQ API Key", type="password")
+
+    if api_key:
+        os.environ['GROQ_API_KEY'] = api_key
+        st.session_state.api_key_set = True
+        st.success("API key set successfully. Loading app...")
+        st.experimental_rerun()
+    else:
+        st.warning("Please enter your GROQ API key to continue.")
+        st.stop()  # Stop execution here if key is not provided
 # import os 
 # os.environ['GROQ_API_KEY'] = st.secrets["GROQ_API_KEY"]
-# Add a text input for the user to enter their GROQ API key
-api_key = st.text_input("Enter your GROQ API Key", type="password")
 
-# Set it as an environment variable only if provided
-if api_key:
-    os.environ['GROQ_API_KEY'] = api_key
-    st.success("API key set successfully.")
 
 # name, authentication_status, username = authenticator.login('main')
 
@@ -1859,8 +1868,6 @@ if __name__ == "__main__":
 # st.error('Username/password is incorrect')
 # elif authentication_status is None:
 # st.warning('Please enter your username and password')
-else:
-    st.warning("Please enter your GROQ API key to continue.")
 
 
 
