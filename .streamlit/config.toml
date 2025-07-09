@@ -1,10 +1,2 @@
 [theme]
 base = "dark"
-
-
-[server]
-fileWatcherType = "poll"
-
-[global]
-# Ignore __pycache__ directories
-watcherIgnorePatterns = ["**/__pycache__/**", "**/*.pyc"]
