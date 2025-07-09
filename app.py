@@ -127,7 +127,7 @@ if authentication_status:
         # Geocoding Functions
         def get_coordinates(location_name):
             """Convert location name to coordinates."""
-            geolocator = Nominatim(user_agent="weather_dashboard_app_v2.0")
+            geolocator = Nominatim(user_agent="weather_dashboard_app_v3.99")
             try:
                 location = geolocator.geocode(location_name, timeout=20)
                 if location:
